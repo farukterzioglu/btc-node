@@ -27,76 +27,81 @@ $ GO111MODULE=on go install -v . ./cmd/...
 
 ### Create btcd config
 ```bash
-$ sudo touch ./btcd-sim.conf
-$ cat >> ./btcd-sim.conf <<EOL
+$ mkdir  ~/.btcd
+$ touch ~/.btcd/btcd.conf 
+$ nano ~/.btcd/btcd.conf
+
+// Paste below
 rpcuser=myuser
 rpcpass=SomeDecentp4ssw0rd
 rpclimituser=mylimituser
 rpclimitpass=Limitedp4ssw0rd
 simnet=1
-datadir=./btcd/data
-rpccert=./btcd/rpc.cert
-rpckey=./btcd/rpc.key
-EOL
 ```
 
 ### Create btcwallet config
 ```bash
-$ sudo touch ./btcwallet-sim.conf
-$ cat >> ./btcwallet-sim.conf <<EOL
+$ mkdir ~/.btcwallet
+$ touch ~/.btcwallet/btcwallet.conf
+$ nano ~/.btcwallet/btcwallet.conf 
+
+//Paste below
 simnet=1
-appdata=./btcwallet/data
-logdir=./btcwallet/data
-rpcconnect=localhost:18556
 username=myuser
 password=SomeDecentp4ssw0rd
 btcdusername=myuser
 btcdpassword=SomeDecentp4ssw0rd
-rpccert=./btcd/rpc.cert
-rpckey=./btcd/rpc.key
-EOL
 ```
 
 ### Create btcctl config
 ```bash
-$ sudo touch ./btcctl-sim.conf
-$ cat >> ./btcctl-sim.conf <<EOL
+$ mkdir ~/.btcctl
+$ sudo touch ~/.btcctl/btcctl.conf
+$ nano ~/.btcctl/btcctl.conf
+
 rpcuser=myuser
 rpcpass=SomeDecentp4ssw0rd
 simnet=1
-rpccert=./btcd/rpc.cert
-rpckey=./btcd/rpc.key
-EOL
 ```
 
 ### Start BTCD
 ```bash
-$ btcd -C ./btcd-sim.conf
+$ btcd
 //Leave it open&running
 ```
 
 ### Start Btc Wallet
 ```bash
-btcwallet -C ./btcwallet-sim.conf --create
-// Save the seed  
-btcwallet -C ./btcwallet-sim.conf
+btcwallet --create
+// Save the seed & password  
+btcwallet
 // Leave it open&running
 ```
 
 From another terminal  
 ```bash
 // Open wallet session
-$ btcctl -C ./btcctl-sim.conf --wallet walletpassphrase "[WALLET-PASSWORD]" 6000
+$ btcctl --wallet walletpassphrase "[WALLET-PASSWORD]" 6000
 // Create a new address (and save it)
-$ btcctl -C ./btcctl-sim.conf --wallet getnewaddress
+$ btcctl --wallet getnewaddress
+//Save the address [NEW_ADDRESS]
 ```
 
-BTCD with mining
+BTCD with mining  
 Stop btcd and start with new address  
 ```bash
-btcd -C ./btcd-sim.conf --miningaddr=SbV6wEdURVhXtGk46UTvKYvzXVfM41u7i5
+btcd --miningaddr=[NEW_ADDRESS]
 ```
 
 ```bash
-btcctl -C ./btcctl-sim.conf generate 100
+$ btcctl generate 100
+$ btcctl --wallet getbalance
+$ btcctl --wallet createnewaccount account1
+$ btcctl --wallet getnewaddress account1 //save the address -> [RECIPIENT]
+$ btcctl --wallet sendtoaddress "[RECIPIENT]" 21
+$ btcctl --wallet generate 1 //save the block id -> [BLOCK_ID]
+$ btcctl --wallet getbalance
+$ btcctl --wallet getblock [BLOCK_ID] // save tx ids -> [TX_ID_1, TX_ID_2]
+$ btcctl --wallet gettransaction TX_ID_1
+$ btcctl --wallet gettransaction TX_ID_2
 ```
