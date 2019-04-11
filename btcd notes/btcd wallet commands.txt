@@ -1,0 +1,107 @@
+Chain Server Commands:
+addnode "addr" "add|remove|onetry"
+createrawtransaction [{"txid":"value","vout":n},...] {"address":amount,...} (locktime)
+debuglevel "levelspec"
+decoderawtransaction "hextx"
+decodescript "hexscript"
+generate numblocks
+getaddednodeinfo dns ("node")
+getbestblock
+getbestblockhash
+getblock "hash" (verbose=true verbosetx=false)
+getblockchaininfo
+getblockcount
+getblockhash index
+getblockheader "hash" (verbose=true)
+getblocktemplate ({"mode":"value","capabilities":["capability",...],"longpollid":"value","sigoplimit":sigoplimit,"sizelimit":sizelimit,"maxversion":n,"target":"value","data":"value","workid":"value"})
+getcfilter "hash" filtertype
+getcfilterheader "hash" filtertype
+getchaintips
+getconnectioncount
+getcurrentnet
+getdifficulty
+getgenerate
+gethashespersec
+getheaders ["blocklocator",...] "hashstop"
+getinfo
+getmempoolentry "txid"
+getmempoolinfo
+getmininginfo
+getnettotals
+getnetworkhashps (blocks=120 height=-1)
+getnetworkinfo
+getpeerinfo
+getrawmempool (verbose=false)
+getrawtransaction "txid" (verbose=0)
+gettxout "txid" vout (includemempool=true)
+gettxoutproof ["txid",...] ("blockhash")
+gettxoutsetinfo
+getwork ("data")
+help ("command")
+invalidateblock "blockhash"
+node "connect|remove|disconnect" "target" ("perm|temp")
+ping
+preciousblock "blockhash"
+reconsiderblock "blockhash"
+searchrawtransactions "address" (verbose=1 skip=0 count=100 vinextra=0 reverse=false ["filteraddr",...])
+sendrawtransaction "hextx" (allowhighfees=false)
+setgenerate generate (genproclimit=-1)
+stop
+submitblock "hexblock" ({"workid":"value"})
+uptime
+validateaddress "address"
+verifychain (checklevel=3 checkdepth=288)
+verifymessage "address" "signature" "message"
+verifytxoutproof "proof"
+version
+
+Wallet Server Commands (--wallet):
+addmultisigaddress nrequired ["key",...] ("account")
+addwitnessaddress "address"
+createmultisig nrequired ["key",...]
+createnewaccount "account"
+dumpprivkey "address"
+dumpwallet "filename"
+encryptwallet "passphrase"
+estimatefee numblocks
+estimatepriority numblocks
+getaccount "address"
+getaccountaddress "account"
+getaddressesbyaccount "account"
+getbalance ("account" minconf=1)
+getnewaddress ("account")
+getrawchangeaddress ("account")
+getreceivedbyaccount "account" (minconf=1)
+getreceivedbyaddress "address" (minconf=1)
+gettransaction "txid" (includewatchonly=false)
+getwalletinfo
+importaddress "address" (rescan=true)
+importprivkey "privkey" ("label" rescan=true)
+importpubkey "pubkey" (rescan=true)
+importwallet "filename"
+keypoolrefill (newsize=100)
+listaccounts (minconf=1)
+listaddressgroupings
+listlockunspent
+listreceivedbyaccount (minconf=1 includeempty=false includewatchonly=false)
+listreceivedbyaddress (minconf=1 includeempty=false includewatchonly=false)
+listsinceblock ("blockhash" targetconfirmations=1 includewatchonly=false)
+listtransactions ("account" count=10 from=0 includewatchonly=false)
+listunspent (minconf=1 maxconf=9999999 ["address",...])
+lockunspent unlock [{"txid":"value","vout":n},...]
+move "fromaccount" "toaccount" amount (minconf=1 "comment")
+renameaccount "oldaccount" "newaccount"
+sendfrom "fromaccount" "toaddress" amount (minconf=1 "comment" "commentto")
+sendmany "fromaccount" {"address":amount,...} (minconf=1 "comment")
+sendtoaddress "address" amount ("comment" "commentto")
+setaccount "address" "account"
+settxfee amount
+signmessage "address" "message"
+signrawtransaction "rawtx" ([{"txid":"value","vout":n,"scriptpubkey":"value","redeemscript":"value"},...] ["privkey",...] flags="ALL")
+walletlock
+walletpassphrase "passphrase" timeout
+walletpassphrasechange "oldpassphrase" "newpassphrase"
+
+
+
+

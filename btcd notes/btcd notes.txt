@@ -1,0 +1,89 @@
+//With default config files
+btcd --simnet --rpcuser=faruk --rpcpass=1234
+btcwallet --simnet --username=faruk --password=1234 --create 
+btcwallet --simnet --username=faruk --password=1234
+btcctl --simnet --rpcuser=faruk --rpcpass=1234 --wallet walletpassphrase "1234" 600
+btcctl --simnet --rpcuser=faruk --rpcpass=1234 --wallet createnewaccount account1
+btcctl --simnet --rpcuser=faruk --rpcpass=1234 --wallet listaccounts
+btcctl --simnet --rpcuser=faruk --rpcpass=1234 --wallet getnewaddress
+btcd --simnet --rpcuser=faruk --rpcpass=1234 --miningaddr=SQqiiJtfueX54oFGuTAzkBTaM23neFvWNF
+btcctl --simnet --rpcuser=faruk --rpcpass=1234 --wallet generate 21
+btcctl --simnet --rpcuser=faruk --rpcpass=1234 --wallet getnewaddress account1
+btcctl --simnet --wallet --rpcuser=faruk --rpcpass=1234 getbalance
+btcctl --simnet --wallet --rpcuser=faruk --rpcpass=1234 sendtoaddress "SRZUDi2foioSnsv2q8jgBEkwneSXWj3zsu" 21
+btcctl --simnet --wallet --rpcuser=faruk --rpcpass=1234 generate 1
+btcctl --simnet --wallet --rpcuser=faruk --rpcpass=1234 getblock 39dfb7919b24e2f092f0a3eba70273e18c23b7656db6a5a0e2b41c281712f374
+btcctl --simnet --wallet --rpcuser=faruk --rpcpass=1234 getblockhash 30
+btcctl --simnet --wallet --rpcuser=faruk --rpcpass=1234 gettransaction 13d03dcc51d9fca9d547193121252383e29992c214e3c0ed6c6ec0095e4bb943
+
+//With config files
+btcd -C .\btcd.conf
+btcwallet -C .\btcwallet.conf --create (seed :...)
+btcwallet -C .\btcwallet.conf 
+btcctl -C .\btcctl.conf --wallet walletpassphrase "1234" 6000
+btcctl -C .\btcctl.conf --wallet getnewaddress
+btcd -C .\btcd.conf --miningaddr=SVH4VuY8KnYmnnt4yKEL8GFnWeSBFrid4m
+btcctl -C .\btcctl.conf --wallet createnewaccount account1
+btcctl -C .\btcctl.conf --wallet listaccounts
+btcctl -C .\btcctl.conf --wallet getnewaddress account1 -> [address: SiK5677eycg3THEApMygWvSAGfMQJfZGRm]
+btcctl -C .\btcctl.conf --wallet sendtoaddress "ScCk1mbLGn3tKE5hWJWHHHW9Vnpp9BpbSF" 1  -> [txId]
+btcctl -C .\btcctl.conf --wallet getbalance
+btcctl -C .\btcctl.conf generate 101
+btcctl -C .\btcctl.conf --wallet getbalance
+btcctl -C .\btcctl.conf --wallet sendtoaddress "SUKXRDZ3UgEvjrpxeYc1AEzmLL7UoD21TW" 21
+btcctl -C .\btcctl.conf generate 1 -> [blockHash]
+btcctl -C .\btcctl.conf --wallet getbalance account1
+btcctl -C .\btcctl.conf getblock 293c35181a3a622f0d79fc995bf00236d1f34ac571b2d214d72a8647b66faae2
+SdjQCwuYWpo6V2CSFVL1RnYsHanGoJh6ZQ
+btcctl -C .\btcctl.conf --wallet gettransaction c9705822b3650b9c2c34980770ea8b6f7b6297909281c4b1871edc14584897a9
+btcctl -C .\btcctl.conf --wallet decoderawtransaction 01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff165108cb8279c4c50b27a40b2f503253482f627463642fffffffff0100f2052a010000001976a91481def9eeefa2f84fa436a9d75da6336ae8318c1d88ac00000000
+btcctl -C .\btcctl.conf --wallet getblockhash 0
+btcctl -C .\btcctl.conf --wallet getblock 683e86bd5c6d110d91b94b97137ba6bfe02dbbdb8e3dff722a669b5d69d77af6
+
+//Post dated -> 
+btcctl -C .\btcctl.conf --wallet transfertransaction SSmTCJHh6wTbEYBjgtT9QPwAEfStCEjaVe c9705822b3650b9c2c34980770ea8b6f7b6297909281c4b1871edc14584897a9
+btcctl -C .\btcctl.conf --wallet sendpostdatedtx "SiK5677eycg3THEApMygWvSAGfMQJfZGRm" 10 1
+
+
+
+
+
+btcd --simnet --rpcuser	=youruser --rpcpass=SomeDecentp4ssw0rd
+btcwallet --simnet --create
+btcwallet --simnet --username=youruser --password=SomeDecentp4ssw0rd
+btcctl --simnet --wallet --rpcuser=youruser --rpcpass=SomeDecentp4ssw0rd getnewaddress
+btcd --simnet --rpcuser=youruser --rpcpass=SomeDecentp4ssw0rd --miningaddr=
+btcctl --simnet --rpcuser=youruser --rpcpass=SomeDecentp4ssw0rd generate 100
+btcctl --simnet --wallet --rpcuser=youruser --rpcpass=SomeDecentp4ssw0rd getbalance
+
+
+
+
+btcd --simnet --rpcuser=mahmut --rpcpass=1234 /datadir:./ /rpclisten:127.0.0.1:18558 /listen:127.0.0.1:18559
+btcd --simnet --rpcuser=mahmut --rpcpass=1234 /datadir:./ /rpclisten:127.0.0.1:18558 /listen:127.0.0.1:18559  /connect:127.0.0.1:18556
+btcd --simnet --rpcuser=faruk --rpcpass=1234 --miningaddr=SeHttif2XPLbdWMgahc476VXmwSZbo1UTq
+btcd --simnet --rpcuser=faruk --rpcpass=1234
+btcctl --simnet --wallet --rpcuser=faruk --rpcpass=1234 getnewaddress
+btcctl --simnet --wallet --rpcuser=faruk --rpcpass=1234 getbalance
+btcctl --simnet --rpcuser=faruk --rpcpass=1234 generate 1
+btcctl --simnet --rpcuser=faruk --rpcpass=faruk getpeerinfo | more
+
+btcwallet --simnet --create
+btcwallet --simnet --username=faruk --password=1234
+btcctl --simnet --rpcuser=faruk --rpcpass=faruk getpeerinfo | more
+btcwallet --simnet --create /appdata:./
+
+
+
+/appdata:./
+
+btcd --testnet --rpcuser=faruk --rpcpass=faruk
+btcctl --testnet --rpcuser=faruk --rpcpass=faruk getinfo
+btcctl --testnet --rpcuser=faruk --rpcpass=faruk getpeerinfo | more
+
+cd $Env:GOPATH\src\github.com\btcsuite\btcd
+go build -o output/btcd.exe
+
+https://github.com/btcsuite/btcd
+https://gowalker.org/github.com/btcsuite/btcd
+http://piotrpasich.com/how-to-setup-own-bitcoin-simulation-network/
